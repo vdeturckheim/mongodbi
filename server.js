@@ -17,7 +17,6 @@ const Document = Mongoose.model('Document', {
 });
 
 require('./documents.json').forEach((d) => (new Document(d)).save().catch(() => {}));
-
 app.post('/documents', (req, res) => {
 
     delete req.body._id;
@@ -36,7 +35,8 @@ app.post('/documents/find', (req, res) => {
         return res.json([]);
     }
 
-    if (req.body.type === "evil projects") {
+    if (req.body.type === "evil projects") { // I don't want people to discover my evli projects,
+        // it would be a shame is 'client.js' contained a method show all the content of the collection here...
         return res.json([]);
     }
 

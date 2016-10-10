@@ -13,7 +13,7 @@ const makeRequest = function (type, atk) {
         json: { type }
     }, (err, result) => {
 
-        console.log(`Got response from server (type: ${JSON.stringify(type)}, attack: ${!!atk}):`);
+        console.log(`Got response from server (body: ${JSON.stringify({type})}, attack: ${!!atk}):`);
         console.log(`ID:\t\t\t\tTYPE\tTITLE:`);
         result.body.forEach((item) => {
             console.log(`${item._id}\t${item.type}\t${item.title}\t`);
@@ -24,4 +24,4 @@ const makeRequest = function (type, atk) {
 
 ['blog', 'fairy', 'evil projects'].forEach((type) => makeRequest(type, false));
 
-makeRequest({ $ne: '' }, true);
+makeRequest({ $gte: '' }, true);// we display all the content of the collection even 'evil project' that should not been seen by client
