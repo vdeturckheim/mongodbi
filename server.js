@@ -35,8 +35,8 @@ app.post('/documents/find', (req, res) => {
         return res.json([]);
     }
 
-    if (req.body.type === "evil projects") { // I don't want people to discover my evli projects,
-        // it would be a shame is 'client.js' contained a method show all the content of the collection here...
+    if (req.body.type === "secret projects") { // I don't want people to discover my secret projects,
+        // it would be a shame is 'client.js' contained a method to show all the content of the collection here...
         return res.json([]);
     }
 
