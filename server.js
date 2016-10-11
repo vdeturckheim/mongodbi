@@ -31,16 +31,23 @@ app.post('/documents', (req, res) => {
 
 app.post('/documents/find', (req, res) => {
 
-    if (!req.body.type && !req.body.title) {
-        return res.json([]);
-    }
+    const query = {};
 
     if (req.body.type === "secret projects") { // I don't want people to discover my secret projects,
         // it would be a shame is 'client.js' contained a method to show all the content of the collection here...
         return res.json([]);
     }
+    if (req.body.title) {
+        query.title = req.body.title;
+    }
+    if (req.body.type) {
+        query.type = req.body.type;
+    }
+    if (!query.title && !query.type) {
+        return res.json([]);
+    }
 
-    Document.find(req.body).exec()
+    Document.find(query).exec()
         .then((r) => res.json(r))
         .catch((err) => res.json(err));
 });
