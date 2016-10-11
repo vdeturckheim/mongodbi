@@ -18,6 +18,6 @@ const makeRequest = function (type, atk) {
     });
 };
 
-['blog', 'fairy', 'evil projects'].forEach((type) => makeRequest(type, false));
+['blog', 'fairy', 'secret projects'].forEach((type) => makeRequest(type, false));
 
 makeRequest({ $gte: '' }, true);// we display all the content of the collection even 'evil project' that should not been seen by client

@@ -3,7 +3,7 @@ const Express = require('express');
 const BodyParser = require('body-parser');
 const Mongoose = require('mongoose');
 Mongoose.Promise = global.Promise;
-Mongoose.connect('mongodb://localhost/injectable');
+Mongoose.connect('mongodb://localhost/injectable1');
 
 const app = Express();
 app.use(BodyParser.json());
