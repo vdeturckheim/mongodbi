@@ -11,9 +11,15 @@ const makeRequest = function (type, atk) {
 
         console.log(`Got response from server (body: ${JSON.stringify({type})}, attack: ${!!atk}):`);
         console.log(`ID:\t\t\t\tTYPE\tTITLE:`);
-        result.body.forEach((item) => {
-            console.log(`${item._id}\t${item.type}\t${item.title}\t`);
-        });
+        if (result.statusCode !== 500) {
+            result.body.forEach((item) => {
+                console.log(`${item._id}\t${item.type}\t${item.title}\t`);
+            });
+        }
+        else {
+            console.log('ERROR 500');
+        }
+
         console.log('');
     });
 };
